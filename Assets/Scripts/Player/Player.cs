@@ -2,6 +2,9 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
@@ -9,6 +12,7 @@ public class Player : MonoBehaviour
     public int Life;
     public int Strength;
     public int Dextery;
+    public string Scene = "Sample Scene";
 
     public string Nombre => Name;
     public int Vida => Life;
@@ -47,15 +51,19 @@ public class Player : MonoBehaviour
 
     public void PlayerStats(string name, int life, int strength, int dextery)
     {
-        this.Name = name;
-        this.Life = life;
-        this.Strength = strength;
-        this.Dextery = dextery;
+        Name = name;
+        Life = life;
+        Strength = strength;
+        Dextery = dextery;
     }
 
     public void ChangeLife(int value)
     {
         Life += value;
         LifeChange?.Invoke(Life);
+        if(Life <= 0)
+        {
+            SceneManager.LoadScene(Scene);
+        }
     }
 }
