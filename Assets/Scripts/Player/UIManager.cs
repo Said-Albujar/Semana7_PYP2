@@ -10,6 +10,7 @@ public class UIManager : MonoBehaviour
     private void Awake()
     {
         PlayerCanva.GetComponent<PlayerStatsCanva>().SetCallback(GameCanvas);
+        PlayerCanva.SetActive(true);
         GameCanva.SetActive(false);
     }
 
